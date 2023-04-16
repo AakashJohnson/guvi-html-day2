@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XMLHTTP req & Functions</title>
+</head>
+<body>
+    <h1>XML HTTP REQUEST</h1>
+    <script>
+        function reqListener(){
+            let country = JSON.parse(this.responseText)
+            console.log(country)
+
+            //for(let i=0;i<country.length;i++)
+            //{
+            //console.log(country[i].name.common.capital.population)
+        //}
+
+           // for(e of country)
+            //{
+             //   console.log(`${e.name.common}-${e.capital?e.capital[0]:""}-${e.population}`)
+
+            //}
+            
+            //forEach with arrow Function
+            country.forEach((e)=>{
+                console.log(e.name.common)
+            })
+
+            //forEach with normal Function
+            country.forEach(function getCapital(e){
+                console.log(e.capital)
+            })
+
+        
+
+
+
+        }
+        const req = new XMLHttpRequest();
+        req.addEventListener("load",reqListener)
+        req.open("GET","https://restcountries.com/v3.1/all");
+        req.send()
+
+
+    </script>
+</body>
+</html>
